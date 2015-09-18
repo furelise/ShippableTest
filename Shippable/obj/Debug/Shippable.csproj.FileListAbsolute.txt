@@ -1,0 +1,8 @@
+D:\GitHub\Shippable\Shippable\bin\Shippable.dll.config
+D:\GitHub\Shippable\Shippable\bin\Shippable.dll
+D:\GitHub\Shippable\Shippable\bin\Shippable.pdb
+D:\GitHub\Shippable\Shippable\bin\Newtonsoft.Json.dll
+D:\GitHub\Shippable\Shippable\bin\Newtonsoft.Json.xml
+D:\GitHub\Shippable\Shippable\obj\Debug\Shippable.csprojResolveAssemblyReference.cache
+D:\GitHub\Shippable\Shippable\obj\Debug\Shippable.dll
+D:\GitHub\Shippable\Shippable\obj\Debug\Shippable.pdb
