@@ -28,11 +28,13 @@
 </head>
 <body>
     <form id="form1" runat="server">
-   
-       <div id="geturl">
-    Get URL:   <asp:TextBox ID="urlText" runat="server" CausesValidation="True" Width="579px"></asp:TextBox> 
-        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="urlText" Display="Dynamic" ErrorMessage="Dont leave empty" ForeColor="Red"></asp:RequiredFieldValidator>
-        <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="Not proper Github URL" ControlToValidate="urlText" Display="Dynamic" ValidationExpression="^(https://github.com/).*" ForeColor="Red"></asp:RegularExpressionValidator>
+   <div style="margin-left:30%; margin-top:10px;">
+       <asp:Label ID="Label10" runat="server" Text="SHIPPABLE SOLUTION" ForeColor="BLACK" Font-Size="30PX"></asp:Label>
+   </div>
+       <div id="geturl" style="margin-left:15%">
+    Enter any Github Repo URL:   <asp:TextBox ID="urlText" runat="server" CausesValidation="True" Width="579px"></asp:TextBox> 
+        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="urlText" Display="Dynamic" ErrorMessage="Dont leave empty!" ForeColor="Red"></asp:RequiredFieldValidator>
+        <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="Not proper Github URL!" ControlToValidate="urlText" Display="Dynamic" ValidationExpression="^(https://github.com/).*" ForeColor="Red"></asp:RegularExpressionValidator>
        <br />
            <div id="button">
         <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Get Issue Details" />
