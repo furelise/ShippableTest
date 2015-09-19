@@ -35,8 +35,7 @@ namespace Shippable
         public string ModifyURL(string url)
         {
            
-            string part1 = url.Substring(19);      //since the url entered will be git hub URL I am converting into github API URL.
-            // From https://github.com/Shippable/support/issues I am extracting all characters after 19th character, i.e https://github.com/
+            string part1 = url.Substring(19);          // From https://github.com/Shippable/support/issues I am extracting all characters after 19th character, i.e https://github.com/
             string part2 = "https://api.github.com/repos/" + part1; //appending that to the actual URL that we use to get JSOn string
             if (url.Substring(0,url.Length-7) != "/issues")//if user hasn't entered '/issues'at end, this part of code will append it to the end
             {
@@ -50,9 +49,9 @@ namespace Shippable
         protected void Button1_Click(object sender, EventArgs e)
         {
             var url2 = urlText.Text;
-            int open=0, open24=0,open247=0,open7=0; //Initialisations
+            int open=0, open24=0,open247=0,open7=0; //Initialisation of variables
         
-            var url = ModifyURL(url2); //modify the URL to get the api url
+            var url = ModifyURL(url2); //converting URL to get Json string
             List<Class1> issues = GetItems(url); //getting list of issues
 
             try
@@ -89,10 +88,10 @@ namespace Shippable
             }
             catch (Exception ex)
             {
-                results.Visible = false; //incase the URL is not pointing to correct repo
+                results.Visible = false; //incase the URL is not pointing to correct repo or 
                 Label9.Visible = true;
                 Label9.ForeColor = System.Drawing.Color.Red;
-                Label9.Text = "Data could not be retrieved. Please make sure that the Git Hub URL points to a correct Repository ";
+                Label9.Text = "Data could not be retrieved.Please make sure that the Git Hub URL points to a correct Repository ";
             }
             
         }
