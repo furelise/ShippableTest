@@ -71,6 +71,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="GetURL.aspx" />
+    <Content Include="Read me.txt" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
