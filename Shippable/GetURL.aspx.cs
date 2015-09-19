@@ -37,12 +37,13 @@ namespace Shippable
            
             string part1 = url.Substring(19);          // From https://github.com/Shippable/support/issues I am extracting all characters after 19th character, i.e https://github.com/
             string part2 = "https://api.github.com/repos/" + part1; //appending that to the actual URL that we use to get JSOn string
-            if (url.Substring(0,url.Length-7) != "/issues")//if user hasn't entered '/issues'at end, this part of code will append it to the end
+            string str = url.Substring(url.Length - 7);
+            if (url.Substring(url.Length - 7) != "/issues" && url.Substring(url.Length - 8) != "/issues/")//if user hasn't entered '/issues'at end, this part of code will append it to the end
             {
-                if (url.Substring(url.Length - 1)!="/")//if '/' is given
+                if (url.Substring(url.Length - 1)!="/")//if '/' is NOT given
                 part2 = part2 + "/issues";
                 else
-                    part2 = part2 + "issues"; //if '/' is not given
+                    part2 = part2 + "issues"; //if '/' is given
             }
             return part2;
         }
