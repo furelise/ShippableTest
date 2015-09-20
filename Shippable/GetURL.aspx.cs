@@ -64,36 +64,51 @@ namespace Shippable
                 else
                     part2 = part2 + "issues"; //if '/' is given
             }
+
+            
             return part2;
         }
         protected void Button1_Click(object sender, EventArgs e)
         {
+           
+            int i = 1; //keeps track of number of pages
             var url2 = urlText.Text;
             int open=0, open24=0,open247=0,open7=0; //Initialisation of variables
         
             var url = ModifyURL(url2); //converting URL to get Json string
-            List<Class1> issues = GetItems(url); //getting list of issues
+           string repoURL=url;
 
             try
             {
-                foreach (Class1 rObj in issues) //iterate through the list of issues
+                while (true)
                 {
-
-
-                    if (rObj.state == "open") //check if issue is open
-                        open++;
-                    DateTime created = rObj.created_at;
-                    var hours = (DateTime.Now - created).TotalHours; //get total number if hours since the issue is created
-
-                    if (hours < 24) //check if less than 24 hours
+                    url = repoURL;
+                   
+                    url = url + "?page=" + i + "&q=is%3Aissue+is%3Aopen"; //appending URL for getting issues page wise
+                    List<Class1> issues = GetItems(url); //getting list of issues for ith page
+                    if (issues.Count == 0)
+                        break;
+                    foreach (Class1 rObj in issues) //iterate through the list of issues
                     {
-                        open24++;
-                    }
-                    if (hours > 24 && hours < (24 * 7)) //check if more than 24 hours but less that 7 days
-                        open247++;
-                    if (hours > (24 * 7)) //check if more than 7 days
-                        open7++;
+                        if (rObj.pull_request != null)
+                            continue;
 
+                        if (rObj.state == "open") //check if issue is open
+                            open++;
+                        DateTime created = rObj.created_at;
+                        var hours = (DateTime.Now - created).TotalHours; //get total number if hours since the issue is created
+
+                        if (hours < 24) //check if less than 24 hours
+                        {
+                            open24++;
+                        }
+                        if (hours > 24 && hours < (24 * 7)) //check if more than 24 hours but less that 7 days
+                            open247++;
+                        if (hours > (24 * 7)) //check if more than 7 days
+                            open7++;
+
+                    }
+                    i++;
                 }
                 Label9.Visible = true;        //just a display message
                 Label9.ForeColor = System.Drawing.Color.Green;
